@@ -1,4 +1,4 @@
-package pl.management.app.management_app.model;
+package pl.management.app.management_app.api.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,17 +8,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(value = "Task")
+@Document(collection = "Task")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Task {
 
     @Id
-    private String id;
+    private int id;
     private String title;
     private String description;
-    private String userId;
-    private List<Comment> commentList;
+   // private String userId;
+    //private List<Comment> commentList;
 
 }
