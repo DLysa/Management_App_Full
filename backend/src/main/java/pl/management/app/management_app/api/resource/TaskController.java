@@ -9,19 +9,19 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("api")
 public class TaskController {
 
     @Autowired
     private TaskRepository repository;
 
     @PostMapping("/addTask")
-    public String saveBook(@RequestBody Task task) {
+    public String addTask(@RequestBody Task task) {
         repository.save(task);
         return "Added task with id: " + task.getId();
     }
-
     @GetMapping("/showAllTasks")
-    public List<Task> getTask(){
+    public List<Task> getTasks(){
         return repository.findAll();
     }
     @GetMapping("/showTask/{id}")

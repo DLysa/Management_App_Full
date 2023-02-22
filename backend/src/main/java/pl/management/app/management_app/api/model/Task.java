@@ -18,7 +18,7 @@ public class Task {
     private int id;
     private String title;
     private String description;
-   // private String userId;
-    //private List<Comment> commentList;
+    private String userId;
+    private List<Comment> commentList;
 
 }
