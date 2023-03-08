@@ -18,6 +18,7 @@ public class Task {
     private int id;
     private String title;
     private String description;
+    private StatusType status;
    // private String userId;
    // private List<Comment> commentList;
 

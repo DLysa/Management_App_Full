@@ -1,4 +1,4 @@
-package pl.management.app.management_app.model;
+package pl.management.app.management_app.api.model;
 
 
 import lombok.AllArgsConstructor;
