@@ -6,20 +6,15 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
 
-@Document(collection = "Task")
+@Document(collection = "Status")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Task {
+public class Status {
 
     @Id
     private int id;
-    private String title;
-    private String description;
-    private String status;
-   // private String userId;
-   // private List<Comment> commentList;
+    private String name;
 
 }

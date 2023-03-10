@@ -7,7 +7,7 @@ import pl.management.app.management_app.api.repository.TaskRepository;
 
 
 import java.util.List;
-        import java.util.Optional;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -32,7 +32,7 @@ public class TaskController {
     }
 
     @DeleteMapping("/deleteTask/{id}")
-    public String deleteBook(@PathVariable int id){
+    public String deleteStatus(@PathVariable int id){
         repository.deleteById(id);
         return "Task with id: " + id +" deleted";
     }
