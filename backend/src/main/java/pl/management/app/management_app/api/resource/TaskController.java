@@ -9,7 +9,7 @@ import pl.management.app.management_app.api.repository.TaskRepository;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("api")
 public class TaskController {
