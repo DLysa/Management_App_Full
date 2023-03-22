@@ -1,12 +1,11 @@
-package pl.managemenet.app.auth;
+package pl.management.app.management_app.auth.resource;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.managemenet.app.auth.User;
+import pl.management.app.management_app.auth.model.User;
 
 
 import java.util.List;
@@ -30,9 +29,6 @@ public class UserServiceApplication {
     }
 
 
-    public static void main(String[] args) {
-        SpringApplication.run(UserServiceApplication.class, args);
-    }
 }
 
 

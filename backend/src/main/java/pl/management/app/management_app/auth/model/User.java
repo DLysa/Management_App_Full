@@ -1,4 +1,4 @@
-package pl.managemenet.app.auth;
+package pl.management.app.management_app.auth.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
