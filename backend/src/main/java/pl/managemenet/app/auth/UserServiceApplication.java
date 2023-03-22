@@ -15,11 +15,11 @@ import java.util.stream.Stream;
 
 @SpringBootApplication
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class UserServiceApplication {
 
 
-    @GetMapping("api")
+    @GetMapping("/")
     public String login(){
         return "auth success";
     }
