@@ -24,8 +24,8 @@ public class UserServiceApplication {
     }
     @GetMapping("/getUsers")
     public List<User> getUsers(){
-        return Stream.of(new User(108,"Dominik", "Lysak","dominik@gmail.com"),
-                        new User(101,"Piotr","Lysak","piotr@gmail.com")).collect(Collectors.toList());
+        return Stream.of(new User(1,"dominik","123","ADMIN","Dominik", "Lysak","dominik@gmail.com"))
+                     /*   new User(101,"Piotr","Lysak","piotr@gmail.com"))*/.collect(Collectors.toList());
     }
 
 
