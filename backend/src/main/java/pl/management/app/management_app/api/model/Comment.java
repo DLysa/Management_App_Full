@@ -11,7 +11,7 @@ import org.springframework.data.annotation.Id;
 public class Comment {
 
     @Id
-    private String id;
+    private int id;
     private String text;
     private String authorId;
 }
