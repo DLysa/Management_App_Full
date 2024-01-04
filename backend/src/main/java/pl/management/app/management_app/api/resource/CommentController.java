@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.management.app.management_app.api.model.Comment;
 import pl.management.app.management_app.api.repository.CommentRepository;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -17,8 +18,13 @@ public class CommentController {
     @PostMapping("/addComment")
     public String addComment(@RequestBody Comment comment) {
         repository.save(comment);
-        return "Added user with id: " + comment.getId();
+        return "Added comment with id: " + comment.getId();
     }
+/*
+    @GetMapping("/showComment/{taskId}")
+    public List<Comment> getComment(@PathVariable int taskId) {
+        return repository.findAllById(taskId);
+    }*/
     @GetMapping("/showAllComments")
     public List<Comment> getAllComments(){
         return repository.findAll();

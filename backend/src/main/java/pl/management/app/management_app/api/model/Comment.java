@@ -14,4 +14,5 @@ public class Comment {
     private int id;
     private String text;
     private String authorId;
+    private int taskId;
 }

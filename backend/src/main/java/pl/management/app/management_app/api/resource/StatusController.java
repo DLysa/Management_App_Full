@@ -35,6 +35,12 @@ public class StatusController {
     @DeleteMapping("/deleteStatus/{id}")
     public String deleteStatus(@PathVariable int id){
         repository.deleteById(id);
-        return "Task with id: " + id +" deleted";
+        return "Status with id: " + id +" deleted";
     }
+/*
+    @DeleteMapping("/deleteAllStatus")
+    public String deleteAllStatus(){
+        repository.deleteAll();
+        return "All status deleted";
+    }*/
 }
