@@ -23,8 +23,9 @@ public class CommentController {
 /*
     @GetMapping("/showComment/{taskId}")
     public List<Comment> getComment(@PathVariable int taskId) {
-        return repository.findAllById(taskId);
+        return repository.findAll().stream().filter(taskId=this.);
     }*/
+
     @GetMapping("/showAllComments")
     public List<Comment> getAllComments(){
         return repository.findAll();

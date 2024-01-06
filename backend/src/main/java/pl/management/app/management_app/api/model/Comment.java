@@ -15,4 +15,5 @@ public class Comment {
     private String text;
     private String authorId;
     private int taskId;
+    private String status;
 }
