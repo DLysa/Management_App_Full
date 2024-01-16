@@ -9,6 +9,8 @@ import pl.management.app.management_app.api.repository.StatusRepository;
 import java.util.List;
 import java.util.Optional;
 
+import static pl.management.app.management_app.api.model.Status.SEQUENCE_NAME;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("api")
@@ -17,8 +19,13 @@ public class StatusController {
     @Autowired
     private StatusRepository repository;
 
+    @Autowired
+    private SequenceContoller sequenceContoller;
+
     @PostMapping("/addStatus")
     public String addStatus(@RequestBody Status status) {
+
+        status.setId(sequenceContoller.getSequenceNumber(SEQUENCE_NAME));
         repository.save(status);
         return "Added status with id: " + status.getId();
     }

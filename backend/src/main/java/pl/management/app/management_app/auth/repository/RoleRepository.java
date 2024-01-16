@@ -1,10 +1,8 @@
 package pl.management.app.management_app.auth.repository;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
+import pl.management.app.management_app.auth.model.Role;
 import pl.management.app.management_app.auth.model.User;
 
-
-public interface UserRepository extends MongoRepository <User, Integer> {
-    User findByUsername(String username);
-
-    void deleteByUsername(String username);
+public interface RoleRepository extends MongoRepository<Role, Integer> {
 }

@@ -9,6 +9,8 @@ import pl.management.app.management_app.api.repository.TaskRepository;
 import java.util.List;
 import java.util.Optional;
 
+import static pl.management.app.management_app.api.model.Task.SEQUENCE_NAME;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("api")
@@ -17,8 +19,19 @@ public class TaskController {
     @Autowired
     private TaskRepository repository;
 
+    @Autowired
+    private SequenceContoller sequenceContoller;
+
+
     @PostMapping("/addTask")
     public String addTask(@RequestBody Task task) {
+        task.setId(sequenceContoller.getSequenceNumber(SEQUENCE_NAME));
+        repository.save(task);
+        return "Added task with id: " + task.getId();
+    }
+
+    @PostMapping("/updateTask")
+    public String updateTask(@RequestBody Task task) {
         repository.save(task);
         return "Added task with id: " + task.getId();
     }
