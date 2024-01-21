@@ -15,11 +15,11 @@ import java.util.Set;
     @AllArgsConstructor
     public class User {
 
-        //@Transient
-        //public static final String SEQUENCE_NAME = "user_sequence";
+        @Transient
+        public static final String SEQUENCE_NAME = "user_sequence";
 
         @Id
-        private String  id;
+        private int  id;
         private String username;
         private String password;
         private Set<Role> roles;

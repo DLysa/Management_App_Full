@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import pl.management.app.management_app.auth.resource.LoginSuccessHandler;
@@ -28,43 +29,43 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors();
-        http.csrf().disable();
+        http
+                .cors().and()
+                .csrf().disable()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                .and()
+                .authorizeRequests()
+                .antMatchers("/rest/auth/userinfo").authenticated()
+                .antMatchers("/rest/auth/userinfo").permitAll()
+                .antMatchers("/secure/auth/deleteUser/*", "/secure/auth/showAllUsers", "/secure/auth/addUser")
+                .permitAll()
+                .antMatchers("/auth/**", "/rest/**").authenticated()
+                .anyRequest().permitAll()
 
-//        http.authorizeRequests()
-//                .antMatchers("/auth/**").authenticated()
-//                .antMatchers("/rest/**").authenticated()
-//                .antMatchers("/auth/addUser").authenticated()
-//                .antMatchers("/auth/showAllUsers").authenticated()
-//                .antMatchers("*").fullyAuthenticated()
-//                .antMatchers("/secure/**").hasAnyRole("ADMIN")
-//                .anyRequest().permitAll()
-//                .and()
-//                .formLogin().successHandler(new LoginSuccessHandler()).permitAll()
-//                .and().httpBasic();
-//
+                .and()
+                .formLogin().successHandler(new LoginSuccessHandler()).permitAll()
+                .and()
+                .httpBasic();
+    }
+
+        /*
     http.authorizeRequests()
+            .antMatchers("/rest/auth/currentUser/*").permitAll()
+            .antMatchers("/rest/auth/currentUser/").permitAll()
+            .antMatchers("/rest/auth/currentUser").permitAll()
             .antMatchers("/secure/auth/deleteUser/*").permitAll()
             .antMatchers("/secure/auth/showAllUsers").permitAll()
             .antMatchers("/secure/auth/addUser").permitAll()
-            .antMatchers("/secure/**").hasAnyRole("ADMIN")
+               .antMatchers("/secure/**").hasAnyRole("ADMIN")
                 .antMatchers("/auth/**", "/rest/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin().successHandler(new LoginSuccessHandler()).permitAll()
                 .and()
                 .httpBasic();
-
-    }
-
-
-
-/*
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("dominik").password("{noop}123").roles("USER");
-    }
 */
+
     @Bean
     public BCryptPasswordEncoder encodePWD() {
 

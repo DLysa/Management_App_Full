@@ -11,6 +11,8 @@ import pl.management.app.management_app.auth.service.UserService;
 
 import java.util.List;
 
+import static pl.management.app.management_app.auth.model.User.SEQUENCE_NAME;
+
 //import static pl.management.app.management_app.auth.model.User.SEQUENCE_NAME;
 
 
@@ -31,16 +33,11 @@ public class UserServiceApplication {
     @Autowired
     private SequenceContoller sequenceController;
 
-/*
-    @GetMapping("/")
-    public String login(){
-        return "auth success";
-    }
-*/
+
     //@PreAuthorize("hasAnyRole('ADMIN')")
     @PostMapping("/addUser")
     public String addUserByAdmin(@RequestBody User user) {
-  //      user.setId(sequenceController.getSequenceNumber(SEQUENCE_NAME));
+        user.setId(sequenceController.getSequenceNumber(SEQUENCE_NAME));
         String pwd = user.getPassword();
         String encryptPwd = passwordEncoder.encode(pwd);
         user.setPassword(encryptPwd);
@@ -49,20 +46,11 @@ public class UserServiceApplication {
     }
 
 
-
-
-
     @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping("/admin/all")
     public String securedHello() {
         return "Secured Hello";
     }
-
-//    @GetMapping("/getUsers")
-//    public List<User> getUsers(){
-//        return Stream.of(new User(1,"dominik","123","ADMIN","Dominik", "Lysak","dominik@gmail.com"))
-//                     /*   new User(101,"Piotr","Lysak","piotr@gmail.com"))*/.collect(Collectors.toList());
-//    }
 
 
     @GetMapping("/showAllUsers")
