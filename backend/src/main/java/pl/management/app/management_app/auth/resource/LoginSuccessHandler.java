@@ -35,9 +35,14 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         response.getWriter().write(userInfo);
         System.out.println(userInfo);
 
-        if (roles.contains("ROLE_ADMIN")) {
+        System.out.println(roles);
+
+        if (roles.contains("ROLE_ADMIN ")) {
+
+            System.out.println("admin");
             getRedirectStrategy().sendRedirect(request, response, "http://localhost:4200/admin");
         } else {
+            System.out.println("nie admin");
             getRedirectStrategy().sendRedirect(request, response, "http://localhost:4200");
         }
     }

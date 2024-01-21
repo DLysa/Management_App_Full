@@ -36,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 .and()
                 .authorizeRequests()
+                .antMatchers("/rest/auth/logout").permitAll()
                 .antMatchers("/rest/auth/userinfo").authenticated()
                 .antMatchers("/rest/auth/userinfo").permitAll()
                 .antMatchers("/secure/auth/deleteUser/*", "/secure/auth/showAllUsers", "/secure/auth/addUser")
