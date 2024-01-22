@@ -23,5 +23,6 @@ public class Task {
     private String title;
     private String description;
     private String status;
+    private String workingFullName;
 
 }
