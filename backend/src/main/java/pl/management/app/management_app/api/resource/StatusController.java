@@ -29,6 +29,12 @@ public class StatusController {
         repository.save(status);
         return "Added status with id: " + status.getId();
     }
+    @PostMapping("/resetStatus")
+    public String resetStatus(@RequestBody Status status) {
+        repository.save(status);
+        return "Added status with id: " + status.getId();
+    }
+
     @GetMapping("/showAllStatus")
     public List<Status> getAllStatus(){
         return repository.findAll();
