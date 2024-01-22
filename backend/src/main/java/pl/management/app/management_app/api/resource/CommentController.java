@@ -23,20 +23,20 @@ public class CommentController {
 
     @PostMapping("/addComment")
     public ResponseEntity<Comment> addComment(@RequestBody Comment comment) {
+
+        if (comment.getText() == null || comment.getText().trim().isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
         try {
             comment.setId(sequenceContoller.getSequenceNumber(SEQUENCE_NAME));
             Comment savedComment = repository.save(comment);
             return ResponseEntity.status(HttpStatus.CREATED).body(savedComment);
         } catch (Exception e) {
-            // Log the exception and return an appropriate error response
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-/*
-    @GetMapping("/showComment/{taskId}")
-    public List<Comment> getComment(@PathVariable int taskId) {
-        return repository.findAll().stream().filter(taskId=this.);
-    }*/
+
 
     @GetMapping("/showAllComments")
     public List<Comment> getAllComments(){
