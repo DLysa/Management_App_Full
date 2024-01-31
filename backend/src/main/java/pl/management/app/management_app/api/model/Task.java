@@ -23,6 +23,7 @@ public class Task {
     private String title;
     private String description;
     private String status;
+    private String insertedUserFullName;
     private String workingFullName;
 
 }
