@@ -25,5 +25,6 @@ public class Task {
     private String status;
     private String insertedUserFullName;
     private String workingFullName;
+    private Boolean archive;
 
 }

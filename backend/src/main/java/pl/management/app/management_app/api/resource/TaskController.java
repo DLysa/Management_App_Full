@@ -44,6 +44,21 @@ public class TaskController {
         return repository.findById(id);
     }
 
+
+    @PostMapping("/archiveTask")
+    public String archiveTask(@RequestBody Task task) {
+        task.setArchive(Boolean.TRUE);
+        repository.save(task);
+        return "Archived task with id: " + task.getId();
+    }
+
+    @PostMapping("/unArchiveTask")
+    public String unArchiveTask(@RequestBody Task task) {
+        task.setArchive(Boolean.FALSE);
+        repository.save(task);
+        return "Archived task with id: " + task.getId();
+    }
+
     @DeleteMapping("/deleteTask/{id}")
     public String deleteStatus(@PathVariable int id){
         repository.deleteById(id);
